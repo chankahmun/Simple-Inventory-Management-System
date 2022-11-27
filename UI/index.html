@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="styles.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<!--<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>-->
+		<script src="script.js"></script>
+	</head>
+	<body>
+
+		<h2>Inventory Management System</h2>
+		<!--
+		Tabs inclucing "Product List" , "Create Product" and "Create Supplier"
+		-->
+		<div class="tab">
+		  <button class="tablinks" onclick="fnOnClickSystemOptions(event, 'ProductsList'); fnGetProducts()">Products List</button>
+		  <button class="tablinks" onclick="fnOnClickSystemOptions(event, 'CreateProduct'); ">Create Product</button>
+		  <button class="tablinks" onclick="fnOnClickSystemOptions(event, 'CreateSupplier'); ">Create Supplier</button>
+		</div>
+		<!--
+		Product List: To display all products 
+		-->
+		<div id="ProductsList" class="tabcontent">
+		  <div>
+				<div>
+
+					<table id="tblProducts" class="table">
+						<thead>
+							<tr>
+								<th scope="col">Product Name</th>
+								<th scope="col">Product SKU</th>
+								<th scope="col">Product Avaibility</th>
+								<th scope="col">Product Supplier</th>
+
+							</tr>
+						</thead>
+						<tbody ></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!--
+		Create Product: To create a new product
+		-->
+		<div id="CreateProduct" class="tabcontent">
+		  
+			<div>
+
+				<form>
+					<!--
+					Field: to input the product name
+					-->
+					<div class="form-group">
+						<label for="productName">Product Name</label>
+						<input type="Text" class="form-control" id="InputProductName" placeholder="Enter your product name">
+
+					</div>
+					<!--
+					Field: to input the product sku
+					-->
+					<div class="form-group">
+						<label for="productSKU">Product SKU</label>
+						<input type="number" class="form-control" id="InputProductSKU" placeholder="Enter your product SKU" min="0">
+
+					</div>
+					<!--
+					Field: to input the product supplier
+					-->
+					<div class="form-group">
+						<label for="productSupplier">Product Supplier Code</label>
+						<input type="Text" class="form-control" id="InputProductSupplier" placeholder="Enter your product supplier">
+
+					</div>
+					<!--
+					Field: to input the avaibility
+					-->
+					<div class="form-group">
+						<label for="productAvaibility">Product Avaibility</label>
+						<div>
+							<input type="radio" id="radioYes" name="productAvaibility" value="1">
+							<label for="Yes">Yes</label>
+						</div>
+						<div>
+							<input type="radio" id="radioNo" name="productAvaibility" value="0">
+							<label for="No">No</label>
+						</div>
+
+
+					</div>
+					<!--
+					Button: to submit restful api
+					-->
+					<div>
+						<input type="button" value="Button to create a products" id="btnCreateProducts" class="onPressCreateProduct" />
+					</div>
+				</form>
+
+			</div>
+		</div>
+		<!--
+		Create Product: To create a new supplier
+		-->
+		<div id="CreateSupplier" class="tabcontent">
+			 <form>
+					<!--
+					Field: to input the supplier name
+					-->
+					<div class="form-group">
+						<label for="supplierRegistration">Product Supplier Name</label>
+						<input type="Text" class="form-control" id="InputSupplierRegistration" placeholder="Enter your product supplier name">
+
+					</div>
+					<!--
+					Field: to input the phone number
+					-->
+					<div class="form-group">
+						<label for="supplierRegistration">Product Supplier Phone Number</label>
+						<input type="tel" class="form-control" id="InputSupplierPhoneNoRegistration" placeholder="Enter your phone number. eg: 011-123-45678" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+					</div>
+					<!--
+					Field: to input the email
+					-->
+					<div class="form-group">
+						<label for="supplierRegistration">Product Supplier Email</label>
+						<input type="Email" class="form-control" id="InputSupplierEmailRegistration" placeholder="Enter your product supplier email. eg: example@gmail.com">
+
+					</div>
+					<!--
+					Button: to submit restful api
+					-->
+					<div>
+						<input type="button" value="Button to create a supplier" id="btnSupplierRegistration" class="onPressCreateSupplier" />
+					</div>
+				</<form>
+
+		</div>
+		
+		<script>
+			{
+				$('.onPressCreateProduct').click(function () { fnCreateProduct() });
+				$('.onPressCreateSupplier').click(function () { fnCreateSupplier() });
+			}
+		</script>
+
+	</body>
+</html> 
